@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Értékelés</title>
+    <link rel='stylesheet' href="css/ertekel.css">
+</head>
+<header>
+    <div>
+        <h1><a class="fo" href="/">Szálláskereső</a></h1>
+    </div>
+</header>
+<body>
+<div class="menbar">
+    <p id="tel">+36 30 7463213</p>
+    <p id="ema">szallaskereso@szallaskereso.com</p>
+</div>
+<div>
+    <nav class="butt">
+        <ul>
+            <li><a class="vi" href="/">Kijelentkezés</a></li>
+        </ul>
+
+    </nav>
+</div>
+<h2 th:text="${adat[0]} + ' értékelése:'"></h2>
+<div class="ertekel">
+    <form action="#" th:action="@{/szallodaertekel}" method="post">
+        <div class="col-md-12 form-group">
+            <label for="ertekeles">Értékelés: </label>
+            <select id="ertekeles" name="ertekeles">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+            </select>
+        </div>
+        <div class="row">
+            <div class="col-md-12 form-group">
+                <input type="hidden" th:value="${adat[1]}" name="felhasznalo" id="felhasznalo">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 form-group">
+                <input type="hidden" th:value="${adat[0]}" name="sza_nev" id="sza_nev">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 form-group">
+                <input type="hidden" th:value="${azon[0]}" name="azon" id="azon">
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-md-12 form-group">
+                <input type="submit" class="btn btn-primary btn-block btn-login" value="Értékelés leadása">
+            </div>
+        </div>
+    </form>
+</div>
+<br>
+<div class="hova">
+    <form action="#" th:action="@{/foglalas}"  method="post">
+        <label><input type="hidden" th:value="${adat[1]}" name="felhasznalonev" id="felhasznalonev"></label>
+        <input type="submit" value="Vissza a foglalásokhoz" class="buttonred" >
+    </form>
+</div>
+</body>
+</html>

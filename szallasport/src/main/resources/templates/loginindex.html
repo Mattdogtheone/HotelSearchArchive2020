@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Index</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel='stylesheet' href="css/loginind.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</head>
+<header>
+    <div>
+        <h1><a class="fo" href="/">Szálláskereső</a></h1>
+    </div>
+</header>
+<body>
+<div class="menbar">
+    <p id="tel">+36 30 7463213</p>
+    <p id="ema">szallaskereso@szallaskereso.com</p>
+</div>
+<div>
+    <nav class="butt">
+        <ul>
+            <li><a class="kij" href="/">Kijelentkezés</a></li>
+        </ul>
+
+    </nav>
+</div>
+<div>
+    <h2 th:text="${users[0].vezeteknev} + ' ' + ${users[0].keresztnev} +' Adatai:'" ></h2>
+    <table>
+        <thead>
+        <tr>
+            <th>Keresztnév</th>
+            <th>Vezetéknév</th>
+            <th>Felhasználónév</th>
+            <th>Email</th>
+            <th>Telefonszám</th>
+            <th>Irányítószám</th>
+            <th>Város</th>
+            <th>Utca</th>
+            <th>Házszám</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="users : ${users}">
+            <td th:text="${users.keresztnev}"></td>
+            <td th:text="${users.vezeteknev}"></td>
+            <td th:text="${users.felhasznalonev}"></td>
+            <td th:text="${users.email}"></td>
+            <td th:text="${users.telefonszam}"></td>
+            <td th:text="${users.iranyitoszam}"></td>
+            <td th:text="${users.varos}"></td>
+            <td th:text="${users.utca}"></td>
+            <td th:text="${users.hazszam}"></td>
+            <td><form action="#" th:action="@{/edit}"  method="post">
+                <label><input type="hidden" th:value="${users.felhasznalonev}" name="felhasznalonev" id="felhasznalonev"></label>
+                <input type="submit" value="Adatmódosítás" class="buttonred" >
+            </form></td>
+            <td><form action="#" th:action="@{/deleteuser}"  method="post">
+                <label><input type="hidden" th:value="${users.felhasznalonev}" name="felh" id="felh"></label>
+                <input type="submit" value="Regisztráció törlése" class="buttonred" >
+            </form></td>
+        </tr>
+    </table>
+    <div class="hova">
+        <h3 th:text="${users[0].keresztnev} + ', hová utaznál?'"></h3>
+        <form action="#" th:action="@{/keresesem}"  method="post">
+            <label><input type="text" placeholder="Város pl: Szeged" size="50" name="varos" id="varos"></label>
+            <label><p class="hatter">Érkezés:</p> <input type="date" name="erkezes" id="erkezes" required></label>
+            <label><p class="hatter">Távozás:</p> <input type="date" name="tavozas" id="tavozas" required></label>
+            <label><input type="hidden" th:value="${users[0].felhasznalonev}" name="felhasznalonev" id="felhasznalonev"></label>
+            <input type="submit" value="Keresés" class="buttonred" >
+        </form>
+    </div>
+    <br>
+    <div class="fogl">
+        <form action="#" th:action="@{/foglalas}"  method="post">
+            <label><input type="hidden" th:value="${users[0].felhasznalonev}" name="felhasznalonev" id="felhasznalonev"></label>
+            <input type="submit" value="Foglalások" class="buttonred" >
+        </form>
+    </div>
+    <br>
+    <div class="szall">
+        <form action="#" th:action="@{/szalloda}"  method="post">
+            <label><input type="hidden" th:value="${users[0].felhasznalonev}" name="felhasznalonev" id="felhasznalonev"></label>
+            <input type="submit" value="Saját szálloda" class="buttonred" >
+        </form>
+    </div>
+    <br>
+    </tbody>
+</div>
+</body>
+
+</html>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/nincsmegszoba.css">
+    <title>Nincs még szoba</title>
+</head>
+<header>
+    <div>
+        <h1><a class="fo" href="/">Szálláskereső</a></h1>
+    </div>
+</header>
+<body>
+
+<div class="menbar">
+    <p id="tel">+36 30 7463213</p>
+    <p id="ema">szallaskereso@szallaskereso.com</p>
+</div>
+<div>
+    <nav class="butt">
+        <ul>
+            <li><a class="vi" href="/">Kijelentkezés</a></li>
+        </ul>
+
+    </nav>
+</div>
+<h2>A szállodának nincsenek még szobái</h2>
+<br>
+<div class="simple-login-container  col-md-4 offset-md-4">
+    <h2>Új szoba létrehozása</h2>
+    <form th:action="@{/ujszoba}" method="post" >
+        <fieldset>
+            <div class="row">
+                <br class="col-md-12 form-group">
+                <label for="va_szobaszam">Szobaszám</label><br>
+                <input type="number" class="form-control"  name="va_szobaszam" id="va_szobaszam" required>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12 form-group">
+                    <label for="kapacitas">Kapacítás</label><br>
+                    <input type="number" class="form-control"  name="kapacitas" id="kapacitas" required>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 form-group">
+                    <label for="arperfo">Ár/fő</label><br>
+                    <input type="number" class="form-control"  name="arperfo" id="arperfo" required>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 form-group">
+                    <label for="agytipus">Ágytípus</label><br>
+                    <input type="text" class="form-control"  id="agytipus" name="agytipus" required>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 form-group">
+                    <label for="konyha">Konyha</label>
+                    <select id="konyha" name="konyha">
+                        <option value="true" selected>Igen</option>
+                        <option value="false">Nem</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 form-group">
+                    <label for="leiras">Leírás</label><br>
+                    <input type="text" class="form-control"  id="leiras" name="leiras" required>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 form-group">
+                    <label for="url">Kép</label><br>
+                    <input type="file"  id="url" name="url" class="form-control" accept="image/*" required>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 form-group">
+                    <input type="hidden" class="form-control" th:value="${szalloda[0].sza_nev}" id="szallodanev" name="szallodanev" required>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 form-group">
+                    <input type="hidden" class="form-control" th:value="${felh}" id="felhasznalonev" name="felhasznalonev" required>
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-md-12 form-group">
+                    <input type="submit" class="btn btn-primary btn-block btn-login" value="Szoba létrehozása">
+                </div>
+            </div>
+        </fieldset>
+    </form>
+</div>
+<br>
+<div class="hova">
+    <form action="#" th:action="@{/szalloda}"  method="post">
+        <label><input type="hidden" th:value="${felh}" name="felhasznalonev" id="felhasznalonev"></label>
+        <input type="submit" value="Vissza a szállodákhoz" class="buttonred" >
+    </form>
+</div>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="css/image/app.js"></script>
+</body>
+</html>

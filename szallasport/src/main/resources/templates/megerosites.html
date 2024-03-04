@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Megerősítés</title>
+    <link rel="stylesheet" href="css/megerosites.css">
+</head>
+<header>
+    <div>
+        <h1><a class="fo" href="/">Szálláskereső</a></h1>
+    </div>
+</header>
+<body>
+
+<div class="menbar">
+    <p id="tel">+36 30 7463213</p>
+    <p id="ema">szallaskereso@szallaskereso.com</p>
+</div>
+<div>
+    <nav class="butt">
+        <ul>
+            <li><a class="vi" href="/">Kijelentkezés</a></li>
+        </ul>
+
+    </nav>
+</div>
+<h2>Biztosan törli a regisztrációt?</h2>
+<br>
+<div class="fogl">
+    <form action="#" th:action="@{/delete}"  method="post">
+        <label><input type="hidden" th:value="${user.felhasznalonev}" name="felh" id="felh"></label>
+        <input type="submit" value="Igen" class="buttonred" >
+    </form>
+</div>
+<br>
+<div class="szall">
+    <form action="#" th:action="@{/vissza}"  method="post">
+        <label><input type="hidden" th:value="${user.felhasznalonev}" name="felhasznalonev" id="felhasznalonev"></label>
+        <input type="submit" value="Mégse" class="buttonred" >
+    </form>
+</div>
+<br>
+</body>
+</html>

@@ -1,0 +1,74 @@
+body{
+    margin: 30px 20px;
+}
+
+nav{
+    background-color: lightgrey;
+}
+
+main > .container {
+    padding: 20px 15px 0;
+}
+.footer {
+    background-color: #f5f5f5;
+}
+.footer > .container {
+    padding-right: 15px;
+    padding-left: 15px;
+}
+code {
+    font-size: 80%;
+}
+
+.jelentabla{
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    border: 1px solid black;
+    width: 400px;
+    background-color: whitesmoke;
+}
+
+#tablah2{
+    text-align: center;
+}
+#jobbratartas{
+    align: right;
+}
+.hova{
+    padding: 90px 180px;
+    background-image: url("hotel-hatter.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: 100% 600px;
+}
+
+.tablamenu{
+    background-color: lightgrey;
+    border: none;
+    width: 100%;
+}
+
+.buttonred{
+    background-color: red;
+    color: white;
+}
+
+.hatter{
+    background-color: white;
+    width: 60px;
+}
+
+.rol{
+    position:absolute ;
+    top:900px;
+    left:760px;
+}
+ul li a{
+    text-decoration: none;
+    color:black;
+}
+h1 a{
+    text-decoration: none;
+    color: black;
+}

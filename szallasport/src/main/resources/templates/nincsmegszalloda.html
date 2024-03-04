@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/nincsmegsajat.css">
+    <title>Nincs még szálloda</title>
+</head>
+<header>
+    <div>
+        <h1><a class="fo" href="/">Szálláskereső</a></h1>
+    </div>
+</header>
+<body>
+
+<div class="menbar">
+    <p id="tel">+36 30 7463213</p>
+    <p id="ema">szallaskereso@szallaskereso.com</p>
+</div>
+<div>
+    <nav class="butt">
+        <ul>
+            <li><a class="vi" href="/">Kijelentkezés</a></li>
+        </ul>
+
+    </nav>
+</div>
+<h2>Nincs még saját szállodád</h2>
+<div class="simple-login-container  col-md-4 offset-md-4">
+    <h2>Új szálloda létrehozása</h2>
+    <form th:action="@{/ujszalloda}" method="post">
+        <fieldset>
+            <div class="row">
+                <br class="col-md-12 form-group">
+                <label for="szallodanev">Szálloda Neve</label><br>
+                <input type="text" class="form-control"  name="szallodanev" id="szallodanev" required>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12 form-group">
+                    <label for="iranyitoszam">Irányítószám</label><br>
+                    <input type="text" class="form-control"  name="iranyitoszam" id="iranyitoszam" required>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 form-group">
+                    <label for="varos">Város</label><br>
+                    <input type="text" class="form-control"  name="varos" id="varos" required>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 form-group">
+                    <label for="utca">Utca</label><br>
+                    <input type="text" class="form-control"  id="utca" name="utca" required>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 form-group">
+                    <label for="hazszam">Házszám</label><br>
+                    <input type="text"  class="form-control"  id="hazszam" name="hazszam" required>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 form-group">
+                    <label for="telefonszam">Telefonszám</label><br>
+                    <input type="number" class="form-control" placeholder="pl:62234567"  name="telefonszam" id="telefonszam" required>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 form-group">
+                    <label for="email">Email cím</label><br>
+                    <input type="text" class="form-control" id="email" name="email" required>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 form-group">
+                    <label for="telefonszam">Mobil telefon</label><br>
+                    <input type="number" class="form-control" placeholder="pl:301234567" name="mobil" id="mobil" required>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 form-group">
+                    <label for="tipus">Típus</label><br>
+                    <input type="text"  id="tipus" name="tipus" class="form-control" required>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 form-group">
+                    <label for="url">Kép</label><br>
+                    <input type="file"  id="url" name="url" class="form-control" accept="image/*" required>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 form-group">
+                    <input type="hidden" class="form-control" th:value="${user[0].felhasznalonev}" id="letrehozta" name="letrehozta" required>
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-md-12 form-group">
+                    <input type="submit" class="btn btn-primary btn-block btn-login" value="Szálloda létrehozása">
+                </div>
+            </div>
+        </fieldset>
+    </form>
+</div>
+<br>
+<br>
+<div class="hova">
+    <form action="#" th:action="@{/vissza}"  method="post">
+        <label><input type="hidden" th:value="${user[0].felhasznalonev}" name="felhasznalonev" id="felhasznalonev"></label>
+        <input type="submit" value="Vissza a kezdőlapra" class="buttonred" >
+    </form>
+</div>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="css/image/app.js"></script>
+</body>
+
+</html>

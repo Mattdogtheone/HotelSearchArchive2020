@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/keres.css">
+    <title>Keresés</title>
+</head>
+<header>
+    <div>
+        <h1><a class="fo" href="/">Szálláskereső</a></h1>
+    </div>
+</header>
+<body>
+
+<div class="menbar">
+    <p id="tel">+36 30 7463213</p>
+    <p id="ema">szallaskereso@szallaskereso.com</p>
+</div>
+<div>
+    <nav class="butt">
+        <ul>
+            <li><a class="reg" href="/regisztracio">Regisztráció</a></li>
+            <li><a class="log" href="/bejelentkezes">Bejelentkezés</a></li>
+        </ul>
+
+    </nav>
+</div>
+<div>
+    <h2>Keresés Eredménye</h2>
+    <table>
+        <thead>
+        <tr>
+            <th>Szobaszam</th>
+            <th>Szálloda neve</th>
+            <th>Város</th>
+            <th>Utca</th>
+            <th>Kapacitás</th>
+            <th>Ár/fő</th>
+            <th>Konyha</th>
+            <th>Leírás</th>
+            <th>Értékelés</th>
+            <th>Szoba Kép</th>
+            <th>Szálloda Kép</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="rooms : ${rooms}">
+            <td th:text="${rooms.va_szobaszam}"></td>
+            <td th:text="${rooms.szallodanev}"></td>
+            <td th:text="${rooms.varos}"></td>
+            <td th:text="${rooms.utca}"></td>
+            <td th:text="${rooms.kapacitas} + ' fő'"></td>
+            <td th:text="${rooms.arperfo} + ' Ft'"></td>
+            <td th:text="${rooms.konyha ? 'van':'nincs'}"></td>
+            <td th:text="${rooms.leiras}"></td>
+            <td th:text="${rooms.ertekeles}==0.0? 'nincs':${rooms.ertekeles}"></td>
+            <td><img th:src="${rooms.url}" alt="Szallaskep" width="300" height="200"></td>
+            <td><img th:src="${rooms.sza_url}" alt="Hotelkep" width="300" height="200"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+
+</html>

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/szobak.css">
+    <title>Szobák</title>
+</head>
+<header>
+    <div>
+        <h1><a class="fo" href="/">Szálláskereső</a></h1>
+    </div>
+</header>
+<body>
+
+<div class="menbar">
+    <p id="tel">+36 30 7463213</p>
+    <p id="ema">szallaskereso@szallaskereso.com</p>
+</div>
+<div>
+    <nav class="butt">
+        <ul>
+            <li><a class="vi" href="/">Kijelentkezés</a></li>
+        </ul>
+
+    </nav>
+</div>
+<div>
+    <h2 th:text="${rooms[0].szallodanev} + ' jelenlegi szobái:'"></h2>
+    <table>
+        <thead>
+        <tr>
+            <th>Szobaszám</th>
+            <th>Kapacitás</th>
+            <th>Ár/fő</th>
+            <th>Ágytipus</th>
+            <th>Konyha</th>
+            <th>Leírás</th>
+            <th>Kép</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="rooms : ${rooms}">
+            <td th:text="${rooms.va_szobaszam}"></td>
+            <td th:text="${rooms.kapacitas} + ' fő'"></td>
+            <td th:text="${rooms.arperfo} + ' Ft'"></td>
+            <td th:text="${rooms.agytipus}"></td>
+            <td th:text="${rooms.konyha} ? 'Van': 'Nincs'"></td>
+            <td th:text="${rooms.leiras}"></td>
+            <td><img th:src="${rooms.url}" alt="Szobakep" width="300" height="200"></td>
+            <td><form action="#" th:action="@{/editszoba}"  method="post">
+                <label><input type="hidden" th:value="${rooms.szobaszam}" name="szobaszam" id="szobaszám"></label>
+                <input type="hidden" class="form-control" th:value="${felh}" id="felhasznalonev" name="felhasznalonev" required>
+                <input type="submit" value="Adatmódosítás" class="buttonred" >
+            </form></td>
+            <td>
+                <form action="#" th:action="@{/deleteszoba}"  method="post">
+                    <label><input type="hidden" th:value="${rooms.szobaszam}" name="szobaszam" id="szobaszám"></label>
+                    <input type="hidden" class="form-control" th:value="${felh}" id="felhasznalonev" name="felhasznalonev" required>
+                    <input type="hidden" class="form-control" th:value="${rooms.szallodanev}" id="sza_nev" name="sza_nev" required>
+                    <input type="submit" value="Törlés" class="buttonred" >
+                </form>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<div class="simple-login-container  col-md-4 offset-md-4">
+    <h2>Új szoba létrehozása</h2>
+    <form th:action="@{/ujszoba}" method="post" >
+        <fieldset>
+            <div class="row">
+                <br class="col-md-12 form-group">
+                <label for="va_szobaszam">Szobaszám</label><br>
+                <input type="number" class="form-control"  name="va_szobaszam" id="va_szobaszam" required>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12 form-group">
+                    <label for="kapacitas">Kapacítás</label><br>
+                    <input type="number" class="form-control"  name="kapacitas" id="kapacitas" required>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 form-group">
+                    <label for="arperfo">Ár/fő</label><br>
+                    <input type="number" class="form-control"  name="arperfo" id="arperfo" required>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 form-group">
+                    <label for="agytipus">Ágytípus</label><br>
+                    <input type="text" class="form-control"  id="agytipus" name="agytipus" required>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 form-group">
+                    <label for="konyha">Konyha</label>
+                    <select id="konyha" name="konyha">
+                        <option value="true" selected>Igen</option>
+                        <option value="false">Nem</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 form-group">
+                    <label for="leiras">Leírás</label><br>
+                    <input type="text" class="form-control"  id="leiras" name="leiras" required>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 form-group">
+                    <label for="url">Kép</label><br>
+                    <input type="file"  id="url" name="url" class="form-control" accept="image/*" required>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 form-group">
+                    <input type="hidden" class="form-control" th:value="${rooms[0].szallodanev}" id="szallodanev" name="szallodanev" required>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 form-group">
+                    <input type="hidden" class="form-control" th:value="${felh}" id="felhasznalonev" name="felhasznalonev" required>
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-md-12 form-group">
+                    <input type="submit" class="btn btn-primary btn-block btn-login" value="Szoba létrehozása">
+                </div>
+            </div>
+        </fieldset>
+    </form>
+</div>
+<br>
+<div class="hova">
+    <form action="#" th:action="@{/szalloda}"  method="post">
+        <label><input type="hidden" th:value="${felh}" name="felhasznalonev" id="felhasznalonev"></label>
+        <input type="submit" value="Vissza a szállodákhoz" class="buttonred" >
+    </form>
+</div>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="css/image/app.js"></script>
+</body>
+
+</html>

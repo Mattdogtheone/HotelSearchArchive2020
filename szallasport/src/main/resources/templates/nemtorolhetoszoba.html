@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Nem törölhető</title>
+    <link rel='stylesheet' href="css/nemtorolszoba.css">
+</head>
+<header>
+    <div>
+        <h1><a class="fo" href="/">Szálláskereső</a></h1>
+    </div>
+</header>
+<body>
+<div class="menbar">
+    <p id="tel">+36 30 7463213</p>
+    <p id="ema">szallaskereso@szallaskereso.com</p>
+</div>
+<div>
+    <nav class="butt">
+        <ul>
+            <li><a class="vi" href="/">Kijelentkezés</a></li>
+        </ul>
+
+    </nav>
+</div>
+<h2>A szobára jelenleg aktív foglalás van, így nem törölhető!</h2>
+<br>
+<div class="hova">
+    <form action="#" th:action="@{/szobak}"  method="post">
+        <label><input type="hidden" th:value="${felh}" name="felhasznalonev" id="felhasznalonev"></label>
+        <label><input type="hidden" th:value="${szalloda[0].sza_nev}" name="sza_nev" id="sza_nev"></label>
+        <input type="submit" value="Vissza a szobákhoz" class="buttonred" >
+    </form>
+</div>
+</body>
+</html>

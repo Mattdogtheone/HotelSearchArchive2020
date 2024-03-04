@@ -1,0 +1,104 @@
+.butt{
+    position: absolute;
+    top :33px;
+    left: 1570px;
+    width: auto;
+    z-index: 3;
+
+}
+.butt ul li{
+    border:2px solid black;
+    background-color: red;
+}
+
+
+h2{
+    position: absolute;
+    top:220px;
+    left:800px;
+}
+.menbar{
+    position: absolute;
+    top:-30px;
+    left:-5px;
+    background-color: darkgray;
+    width:100%;
+    height: 180px;
+    z-index: 1;
+
+}
+.menbar #ema{
+    position: absolute;
+    top:100px;
+    left:1500px;
+}
+.menbar #tel{
+    position: absolute;
+    top:60px;
+    left:1470px;
+}
+h1{
+    position: absolute;
+    top:30px;
+    left:50px;
+    z-index: 2;
+
+}
+.rol{
+    position:absolute ;
+    top:900px;
+    left:760px;
+}
+
+ul li{
+    list-style-type: none;
+    display: inline;
+    margin: 10px;
+}
+ul li a{
+    text-decoration: none;
+    color:black;
+}
+ul li a:hover{
+    text-decoration: underline;
+    opacity: 50%;
+}
+.menu{
+    position: absolute;
+    top:150px;
+    left:680px;
+    z-index: 4;
+
+    padding: 0;
+    margin:10px;
+}
+.butt ul li a:hover{
+    background-color: blue;
+}
+table{
+    position:relative;
+    top:250px;
+    left:550px;
+    padding: 20px;
+    margin:20px;
+    text-align: center;
+
+}
+tr{
+    border:2px black solid;
+}
+td{
+    border:2px black solid;
+}
+th{
+    border:2px black solid;
+}
+.hova{
+    position: absolute;
+    top: 600px;
+    left: 900px;
+}
+h1 a{
+    text-decoration: none;
+    color: black;
+}

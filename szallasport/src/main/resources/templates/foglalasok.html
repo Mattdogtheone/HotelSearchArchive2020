@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Foglalások</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel='stylesheet' href="css/foglalasok.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</head>
+<header>
+    <div>
+        <h1><a class="fo" href="/">Szálláskereső</a></h1>
+    </div>
+</header>
+
+<body>
+
+<div class="menbar">
+    <p id="tel">+36 30 7463213</p>
+    <p id="ema">szallaskereso@szallaskereso.com</p>
+</div>
+<div>
+    <nav class="butt">
+        <ul>
+            <li><a class="kij" href="/">Kijelentkezés</a></li>
+        </ul>
+
+    </nav>
+</div>
+<div>
+    <h2>Foglalások Adatai:</h2>
+    <table>
+        <thead>
+        <tr>
+            <th>Azonosító</th>
+            <th>Szállodanév</th>
+            <th>Ár/fő</th>
+            <th>Szobaszam</th>
+            <th>Érkezés</th>
+            <th>Távozás</th>
+            <th>Személyek száma</th>
+            <th>Ágy típusa</th>
+            <th>Konyha</th>
+            <th>Írányítószám</th>
+            <th>Város</th>
+            <th>Utca</th>
+            <th>Házszám</th>
+            <th>Telefon</th>
+            <th>Email</th>
+            <th>Értékelés</th>
+            <th>Értékelésszám</th>
+            <th>Szálloda kép</th>
+            <th>Szoba kép</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="foglalas : ${foglalas}">
+            <td th:text="${foglalas.azon}"></td>
+            <td th:text="${foglalas.szallodanev}"></td>
+            <td th:text="${foglalas.arperfo} + ' Ft'"></td>
+            <td th:text="${foglalas.va_szobaszam}"></td>
+            <td th:text="${foglalas.erkezes}"></td>
+            <td th:text="${foglalas.tavozas}"></td>
+            <td th:text="${foglalas.kapacitas} + ' fő'"></td>
+            <td th:text="${foglalas.agytipus}"></td>
+            <td th:text="${foglalas.konyha ?'Van':'Nincs'}"></td>
+            <td th:text="${foglalas.iranyitoszam}"></td>
+            <td th:text="${foglalas.varos}"></td>
+            <td th:text="${foglalas.utca}"></td>
+            <td th:text="${foglalas.hazszam}"></td>
+            <td th:text="${foglalas.telefon}"></td>
+            <td th:text="${foglalas.email}"></td>
+            <td th:text="${foglalas.ertekeles}==0.0? 'nincs':${foglalas.ertekeles}"></td>
+            <td th:text="${foglalas.ert_szam}==0? 'nincs':${foglalas.ert_szam} +' db'"></td>
+            <td><img th:src="${foglalas.sza_url}" alt="Szallodakep" width="300" height="200"></td>
+            <td><img th:src="${foglalas.url}" alt="Szallaskep" width="300" height="200"></td>
+            <td>
+                <form action="#" th:action="@{/szolgaltatasok}"  method="post">
+                    <label><input type="hidden" th:value="${foglalas.szallodanev}" name="szallodanev" id="szallodanev"></label>
+                    <label><input type="hidden" th:value="${foglalas.felhasznalonev}" name="felhasznalonev" id="felhasznalonev"></label>
+                    <input type="submit" value="Szolgáltatások" class="buttonred" >
+                </form>
+            </td>
+            <td>
+                <form action="#" th:action="@{/ertekel}"  method="post">
+                    <label><input type="hidden" th:value="${foglalas.szallodanev}" name="szallodanev" id="szallodanev"></label>
+                    <label><input type="hidden" th:value="${foglalas.felhasznalonev}" name="felhasznalonev" id="felhasznalonev"></label>
+                    <label><input type="hidden" th:value="${foglalas.azon}" name="azon" id="azon"></label>
+                    <input type="submit" value="Értékelés" class="buttonred" >
+                </form>
+            </td>
+            <td>
+                <form action="#" th:action="@{/deletefoglalas}"  method="post">
+                    <label><input type="hidden" th:value="${foglalas.azon}" name="azon" id="azon"></label>
+                    <label><input type="hidden" th:value="${foglalas.felhasznalonev}" name="felhasznalonev" id="felhasznalonev"></label>
+                    <input type="submit" value="Töröl" class="buttonred" >
+                </form>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="hova">
+    <form action="#" th:action="@{/vissza}"  method="post">
+        <label><input type="hidden" th:value="${foglalas[0].felhasznalonev}" name="felhasznalonev" id="felhasznalonev"></label>
+        <input type="submit" value="Vissza a kezdőlapra" class="buttonred" >
+    </form>
+</div>
+<br>
+</body>
+
+</html>

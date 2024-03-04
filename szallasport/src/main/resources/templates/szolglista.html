@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/szolglista.css">
+    <title>Szolgáltatások</title>
+</head>
+<header>
+    <div>
+        <h1><a class="fo" href="/">Szálláskereső</a></h1>
+    </div>
+</header>
+<body>
+
+<div class="menbar">
+    <p id="tel">+36 30 7463213</p>
+    <p id="ema">szallaskereso@szallaskereso.com</p>
+</div>
+<div>
+    <nav class="butt">
+        <ul>
+            <li><a class="vi" href="/">Kijelentkezés</a></li>
+        </ul>
+
+    </nav>
+</div>
+<div>
+    <h2 th:text="${szolg[0].szallodanev} + ' Szolgáltatásai:'"></h2>
+    <table>
+        <thead>
+        <tr>
+            <th>Szolgáltatás</th>
+            <th>Ár</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="szolg : ${szolg}">
+            <td th:text="${szolg.tipus}"></td>
+            <td th:text="${szolg.szolg_ar} + ' Ft'"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<br>
+<div class="hova">
+    <form action="#" th:action="@{/foglalas}"  method="post">
+        <label><input type="hidden" th:value="${felh}" name="felhasznalonev" id="felhasznalonev"></label>
+        <input type="submit" value="Vissza a foglalásokhoz" class="buttonred" >
+    </form>
+</div>
+<br>
+</body>
+
+</html>

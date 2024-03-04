@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/keresbel.css">
+    <title>Keresés</title>
+</head>
+<header>
+    <div>
+        <h1><a class="fo" href="/">Szálláskereső</a></h1>
+    </div>
+</header>
+<body>
+
+<div class="menbar">
+    <p id="tel">+36 30 7463213</p>
+    <p id="ema">szallaskereso@szallaskereso.com</p>
+</div>
+<div>
+    <nav class="butt">
+        <ul>
+            <li><a class="vi" href="/">Kijelentkezés</a></li>
+        </ul>
+
+    </nav>
+</div>
+<div>
+    <h2>Keresés Eredménye</h2>
+    <table>
+        <thead>
+        <tr>
+            <th>Szobaszám</th>
+            <th>Szálloda neve</th>
+            <th>Város</th>
+            <th>Utca</th>
+            <th>Kapacitás</th>
+            <th>Ár/fő</th>
+            <th>Konyha</th>
+            <th>Leírás</th>
+            <th>Értékelés</th>
+            <th>Szoba Kép</th>
+            <th>Hotel Kép</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="rooms : ${rooms}">
+            <td th:text="${rooms.va_szobaszam}"></td>
+            <td th:text="${rooms.szallodanev}"></td>
+            <td th:text="${rooms.varos}"></td>
+            <td th:text="${rooms.utca}"></td>
+            <td th:text="${rooms.kapacitas} +' fő'"></td>
+            <td th:text="${rooms.arperfo} + ' Ft'"></td>
+            <td th:text="${rooms.konyha ? 'van':'nincs'}"></td>
+            <td th:text="${rooms.leiras}"></td>
+            <td th:text="${rooms.ertekeles}==0.0? 'nincs':${rooms.ertekeles}"></td>
+            <td><img th:src="${rooms.url}" alt="Szallaskep" width="300" height="200"></td>
+            <td><img th:src="${rooms.sza_url}" alt="Hotelkep" width="300" height="200"></td>
+            <td>
+            <form action="#" th:action="@{/lefoglal}"  method="post">
+                <label><input type="hidden" th:value="${attribute[2]}" name="felhasznalonev" id="felhasznalonev"></label>
+                <label><input type="hidden" th:value="${rooms.szobaszam}" name="szobaszam" id="szobaszam"></label>
+                <label><input type="hidden" th:value="${attribute[0]}" name="erkezes" id="erkezes"></label>
+                <label><input type="hidden" th:value="${attribute[1]}" name="tavozas" id="tavozas"></label>
+                <input type="submit" value="Lefoglal" class="buttonred" >
+            </form>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <table>
+        <thead>
+        <tr>
+            <th>Érkezes</th>
+            <th>Távozás</th>
+        </tr>
+        </thead>
+        <tbody>
+            <td th:text="${attribute[0]}"></td>
+            <td th:text="${attribute[1]}"></td>
+        </tbody>
+    </table>
+</div>
+<div class="hova">
+    <form action="#" th:action="@{/vissza}"  method="post">
+        <label><input type="hidden" th:value="${attribute[2]}" name="felhasznalonev" id="felhasznalonev"></label>
+        <input type="submit" value="Vissza a kezdőlapra" class="buttonred" >
+    </form>
+</div>
+</body>
+
+</html>

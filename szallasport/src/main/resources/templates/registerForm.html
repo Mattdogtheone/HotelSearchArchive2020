@@ -1,0 +1,107 @@
+<!DOCTYPE HTML>
+<html xmlns:layout="http://www.w3.org/1999/xhtml" xmlns:th="http://www.springframework.org/schema/data/jaxb"
+      xmlns="http://www.w3.org/1999/html"
+      layout:decorate="~{fragments/main_layout}" lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="css/regiszt.css">
+    <title>Regisztráció</title>
+</head>
+<header>
+    <div>
+        <h1><a class="fo" href="/">Szálláskereső</a></h1>
+    </div>
+
+</header>
+<body>
+
+   <div class="menbar">
+       <p id="tel">+36 30 7463213</p>
+       <p id="ema">szallaskereso@szallaskereso.com</p>
+   </div>
+   <div>
+       <nav class="butt">
+           <ul>
+               <li><a class="reg" href="/regisztracio">Regisztráció</a></li>
+               <li><a class="log" href="/bejelentkezes">Bejelentkezés</a></li>
+           </ul>
+
+       </nav>
+   </div>
+    <div class="simple-login-container  col-md-4 offset-md-4">
+
+        <h2>Regisztráció</h2>
+        <form th:action="@{/register}" th:object="${user}" method="post">
+            <fieldset>
+            <div class="row">
+                <br class="col-md-12 form-group">
+                    <label for="keresztnev">Keresztnév</label><br>
+                    <input type="text" class="form-control" placeholder="Keresztnév" name="keresztnev" id="keresztnev" required>
+                </div>
+
+            <div class="row">
+                <div class="col-md-12 form-group">
+                    <label for="vezeteknev">Vezetéknév</label><br>
+                    <input type="text" class="form-control" placeholder="Vezetéknév" name="vezeteknev" id="vezeteknev" required>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 form-group">
+                    <label for="felhasznalonev">Felhasználónév</label><br>
+                    <input type="text" class="form-control" placeholder="Felhasználónév" name="felhasznalonev" id="felhasznalonev" required>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 form-group">
+                    <label for="email">Email cím</label><br>
+                    <input type="text" class="form-control" placeholder="Email" id="email" name="email" required>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 form-group">
+                    <label for="jelszo">Jelszó</label><br>
+                    <input type="password" class="form-control" placeholder="Jelszó" id="jelszo" name="jelszo"  minlength="6" required>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 form-group">
+                    <label for="telefonszam">Telefonszám</label><br>
+                    <input type="number" class="form-control" placeholder="pl:301234567" name="telefonszam" id="telefonszam" min="1" max="999999999" required>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 form-group">
+                    <label for="iranyitoszam">Irányítószám</label><br>
+                    <input type="number" class="form-control" placeholder="Irányítószám" name="iranyitoszam" id="iranyitoszam" min="1" max="99999" required>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 form-group">
+                    <label for="varos">Város</label><br>
+                    <input type="text"  placeholder="Város" id="varos" name="varos" class="form-control" required>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 form-group">
+                    <label for="utca">Utca</label><br>
+                    <input type="text" class="form-control" placeholder="Utca" id="utca" name="utca" required>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 form-group">
+                    <label for="hazszam">Házszám</label><br>
+                    <input type="text"  class="form-control" placeholder="Házszám" id="hazszam" name="hazszam" required>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 form-group">
+                    <input type="submit" class="btn btn-primary btn-block btn-login" value="Regisztráció">
+                </div>
+            </div>
+            </fieldset>
+        </form>
+    </div>
+</body>
+
+</html>

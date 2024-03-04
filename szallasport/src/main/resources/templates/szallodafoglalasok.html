@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Szálloda foglalásai</title>
+    <link rel='stylesheet' href="css/szallfogl.css">
+</head>
+<header>
+    <div>
+        <h1><a class="fo" href="/">Szálláskereső</a></h1>
+    </div>
+</header>
+<body>
+
+<div class="menbar">
+    <p id="tel">+36 30 7463213</p>
+    <p id="ema">szallaskereso@szallaskereso.com</p>
+</div>
+<div>
+    <nav class="butt">
+        <ul>
+            <li><a class="vi" href="/">Kijelentkezés</a></li>
+        </ul>
+
+    </nav>
+</div>
+<div>
+    <h2 th:text="${foglalas[0].szallodanev} + ' foglalásai:'"></h2>
+    <table>
+        <thead>
+        <tr>
+            <th>Azonosító</th>
+            <th>Felhasználónév</th>
+            <th>Vezetéknév</th>
+            <th>Keresztnev</th>
+            <th>Szobaszam</th>
+            <th>Érkezés</th>
+            <th>Távozás</th>
+            <th>Írányítószám</th>
+            <th>Város</th>
+            <th>Utca</th>
+            <th>Házszám</th>
+            <th>Telefon</th>
+            <th>Email</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="foglalas : ${foglalas}">
+            <td th:text="${foglalas.azon}"></td>
+            <td th:text="${foglalas.felhasznalonev}"></td>
+            <td th:text="${foglalas.vezeteknev}"></td>
+            <td th:text="${foglalas.keresztnev}"></td>
+            <td th:text="${foglalas.va_szobaszam}"></td>
+            <td th:text="${foglalas.erkezes}"></td>
+            <td th:text="${foglalas.tavozas}"></td>
+            <td th:text="${foglalas.iranyitoszam}"></td>
+            <td th:text="${foglalas.varos}"></td>
+            <td th:text="${foglalas.utca}"></td>
+            <td th:text="${foglalas.hazszam}"></td>
+            <td th:text="${foglalas.telefonszam}"></td>
+            <td th:text="${foglalas.email}"></td>
+            <td>
+                <form action="#" th:action="@{/foglalastorlese}"  method="post">
+                    <label><input type="hidden" th:value="${foglalas.azon}" name="azon" id="azon"></label>
+                    <label><input type="hidden" th:value="${felh}" name="felhasznalonev" id="felhasznalonev"></label>
+                    <label><input type="hidden" th:value="${foglalas.szallodanev}" name="szallodanev" id="szallodanev"></label>
+                    <input type="submit" value="Töröl" class="buttonred" >
+                </form>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<br>
+<div class="hova">
+    <form action="#" th:action="@{/szalloda}"  method="post">
+        <label><input type="hidden" th:value="${felh}" name="felhasznalonev" id="felhasznalonev"></label>
+        <input type="submit" value="Vissza a szállodáimhoz" class="buttonred" >
+    </form>
+</div>
+<br>
+</body>
+</html>

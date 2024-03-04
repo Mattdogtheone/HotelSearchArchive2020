@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Nem törölhető</title>
+    <link rel='stylesheet' href="css/nemtorolfelhszallfogl.css">
+</head>
+<header>
+    <div>
+        <h1><a class="fo" href="/">Szálláskereső</a></h1>
+    </div>
+</header>
+<body>
+<div class="menbar">
+    <p id="tel">+36 30 7463213</p>
+    <p id="ema">szallaskereso@szallaskereso.com</p>
+</div>
+<div>
+    <nav class="butt">
+        <ul>
+            <li><a class="vi" href="/">Kijelentkezés</a></li>
+        </ul>
+
+    </nav>
+</div>
+<h3>A regisztráció nem törölhető, valamelyik szállodádnak aktív foglalható szobája van.</h3>
+<br>
+<form action="#" th:action="@{/login}"  method="post">
+    <label><input type="hidden" th:value="${users[0].felhasznalonev}" name="felhasznalonev" id="felhasznalonev"></label>
+    <label><input type="hidden" th:value="${users[0].jelszo}" name="jelszo" id="jelszo"></label>
+    <input type="submit" value="Vissza a kezdőlapra" class="buttonred" >
+</form>
+</body>
+</html>

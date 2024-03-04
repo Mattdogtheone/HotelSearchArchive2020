@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Update</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/update.css">
+</head>
+<header>
+    <div>
+        <h1><a class="fo" href="/">Szálláskereső</a></h1>
+    </div>
+</header>
+<body>
+<div class="menbar">
+    <p id="tel">+36 30 7463213</p>
+    <p id="ema">szallaskereso@szallaskereso.com</p>
+</div>
+<div>
+    <nav class="butt">
+        <ul>
+            <li><a class="kij" href="/">Kijelentkezés</a></li>
+        </ul>
+
+    </nav>
+</div>
+<div>
+    <h2>Felhasználó adatmódosítás</h2>
+    <form action="#" th:action="@{/updateuser}" method="post" id="kozepre">
+        <label><p>Keresztnév:
+            <input type="text" name="keresztnev" id="keresztnev" class="jobbra" th:value="${user.keresztnev}"/></p>
+        </label>
+        <label><p>Vezetéknév:
+            <input type="text" name="vezeteknev" id="vezeteknev" class=" jobbra" th:value="${user.vezeteknev}"/></p>
+        </label>
+        <label>
+            <input type="hidden" name="felhasznalonev" id="felhasznalonev" th:value="${user.felhasznalonev}"/>
+        </label>
+        <label><p>Email:
+            <input type="text" name="email" id="emial" class="jobbra" th:value="${user.email}"/></p>
+        </label>
+        <label><p>Jelszo:
+            <input type="text" name="jelszo" id="jelszo" minlength="6" class="jobbra" th:value="${user.jelszo}"/></p>
+        </label>
+        <label><p>Telefonszám:
+            <input type="number" name="telefonszam" id="telefonszam"  class="jobbra" min="1" max="999999999" th:value="${user.telefonszam}"/></p>
+        </label>
+        <label><p>Irányítószám:
+            <input type="number" name="iranyitoszam" id="iranyitoszam" class="jobbra" min="1" max="99999" th:value="${user.iranyitoszam}"/></p>
+        </label>
+        <label><p>Város:
+            <input type="text" name="varos" id="varos" class="jobbra" th:value="${user.varos}"/></p>
+        </label>
+        <label><p>Utca:
+            <input type="text" name="utca" id="utca" class="jobbra" th:value="${user.utca}"/></p>
+        </label>
+        <label><p>Házszám:
+            <input type="text" name="hazszam" id="hazszam" class="jobbra" th:value="${user.hazszam}"/></p>
+        </label>
+        <input type="submit" value="Elküld" class="btn-sm btn-dark details"/>
+    </form>
+</div>
+</body>
+</html>
